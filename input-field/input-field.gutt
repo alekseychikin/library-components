@@ -1,0 +1,22 @@
+<param name={$type} value="text" />
+<param name={$label} value="" />
+<param name={$value} value="" />
+<param name={$id} value="" />
+<param name={$placeholder} value="" />
+<param name={$role} value="" />
+<param name={$disabled} value={false} />
+
+<dl class="input-field">
+	<dt class="input-field__term">
+		<label class="input-field__label" for={$id}>{$label}</label>
+	</dt>
+	<dd class="input-field__details">
+		<slot>
+			<input class="input-field__input" type={$type} id={$id} value={$value} placeholder={$placeholder} disabled={$disabled}>
+				<if test={str_len($role) > 0}>
+					<attribute name="data-role" value={$role} />
+				</if>
+			</input>
+		</slot>
+	</dd>
+</dl>

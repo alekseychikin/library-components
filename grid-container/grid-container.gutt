@@ -1,0 +1,5 @@
+<param name={$left} value={false} />
+
+<div class={classes("grid-container", $left ?? "grid-container--left" !! "")}>
+	<slot />
+</div>

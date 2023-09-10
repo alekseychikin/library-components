@@ -1,0 +1,31 @@
+@import url('../variables.pcss');
+
+.grid-col {
+	width: 100%;
+}
+
+@media (--desktop) {
+	.grid-col {
+		margin: 0 calc(var(--gutter) / 2);
+	}
+
+	@for $i from 1 to 12 {
+		.grid-col--width-$(i) {
+			width: calc((100% + var(--gutter)) / 12 * $(i) - var(--gutter));
+		}
+
+		@for $j from 1 to $i {
+			.grid-col--width-$(i) .grid-col--width-$(j) {
+				width: calc(100% / $(i) * $(j) - var(--gutter));
+			}
+		}
+	}
+
+	.grid-col:first-child {
+		margin-left: 0;
+	}
+
+	.grid-col:last-child {
+		margin-right: 0;
+	}
+}

@@ -1,0 +1,15 @@
+<param name={$label} value="" />
+<param name={$value} value="" />
+<param name={$id} value="" />
+<param name={$placeholder} value="" />
+<param name={$role} value="" />
+<param name={$disabled} value={false} />
+
+<label class="form-select">
+	<select name="" id="" id={$id} value={$value} placeholder={$placeholder} disabled={$disabled}>
+		<if test={str_len($role) > 0}>
+			<attribute name="data-role" value={$role} />
+		</if>
+		<slot />
+	</select>
+</label>

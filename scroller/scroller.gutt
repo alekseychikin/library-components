@@ -1,0 +1,12 @@
+<div class="scroller" data-component="scroller">
+	<div class="scroller__scrollbar hide">
+		<div class="scroller__thumb"></div>
+	</div>
+	<div class="scroller__wrapper">
+		<div class="scroller__scrollable">
+			<div class="scroller__content">
+				<slot />
+			</div>
+		</div>
+	</div>
+</div>

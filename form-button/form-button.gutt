@@ -1,0 +1,38 @@
+<param name={$id} value="" />
+<param name={$name} value="" />
+<param name={$type} value="button" />
+<param name={$disabled} value={false} />
+<param name={$role} value="" />
+<param name={$href} value="" />
+<param name={$target} value="" />
+<param name={$appearance} value="primary" />
+
+<switch>
+	<case test={str_len($href)}>
+		<a href={$href}>
+			<if test={str_len($target)}>
+				<attribute name="target" value={$target} />
+			</if>
+
+			<slot />
+		</a>
+	</case>
+
+	<default>
+		<button class={classes("form-button", "form-button--appearance-" ++ $appearance)} type={$type} disabled={$disabled}>
+			<if test={str_len($id)}>
+				<attribute name="id" value={$id} />
+			</if>
+
+			<if test={str_len($name)}>
+				<attribute name="name" value={$name} />
+			</if>
+
+			<if test={str_len($role)}>
+				<attribute name="data-role" value={$role} />
+			</if>
+
+			<slot />
+		</button>
+	</default>
+</switch>

@@ -1,0 +1,3 @@
+<param name={$width} value={1} />
+
+<div class={classes("grid-col", "grid-col--width-" ++ $width)}><slot /></div>

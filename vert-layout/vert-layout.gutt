@@ -1,0 +1,5 @@
+<param name={$size} value="m" />
+
+<div class={classes("vert-layout", "vert-layout--size-" ++ $size)}>
+	<slot />
+</div>
