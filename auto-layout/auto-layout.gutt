@@ -1,0 +1,13 @@
+<param name={$size} value="m" />
+<param name={$row} value={false} />
+<param name={$top} value={false} />
+<param name={$bottom} value={false} />
+
+<div class={classes(
+	"auto-layout",
+	"auto-layout--size-" ++ $size,
+	$row ?? "auto-layout--row" !! "auto-layout--col",
+	$top ?? 'auto-layout--top' !! '', $bottom ?? 'auto-layout--bottom' !! ''
+)}>
+	<slot />
+</div>

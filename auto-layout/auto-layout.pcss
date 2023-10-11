@@ -1,0 +1,33 @@
+.auto-layout {
+	display: flex;
+	flex-direction: column;
+}
+
+.auto-layout--row {
+	flex-direction: row;
+	align-items: center;
+}
+
+.auto-layout--row > * + * {
+	margin-left: 0.8rem;
+}
+
+.auto-layout--col > * + * {
+	margin-top: 0.8rem;
+}
+
+.auto-layout--row.auto-layout--size-m > * + * {
+	margin-left: 1.6rem;
+}
+
+.auto-layout--col.auto-layout--size-m > * + * {
+	margin-top: 1.6rem;
+}
+
+.auto-layout--row.auto-layout--top {
+	align-items: flex-start;
+}
+
+.auto-layout--row.auto-layout--bottom {
+	align-items: flex-end;
+}
