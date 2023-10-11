@@ -65,7 +65,7 @@ export default class Component {
 			const match = key.split(':')
 			const events = match[0].trim().split(' ')
 
-			events.forEach(event => this.node.removeEventListener(event, this.eventHandler))
+			events.forEach((event) => this.node.removeEventListener(event, this.eventHandler, true))
 		}
 	}
 }
