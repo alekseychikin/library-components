@@ -1,0 +1,15 @@
+<import name="context-menu-items" from="./context-menu-items.gutt" />
+
+<param name={$open} value={false} />
+<param name={$role} value="" />
+<param name={$index} value="" />
+<param name={$actions} value={[]} />
+
+<div
+	class={classes("context-menu", $open ?? "context-menu--open" !! "")}
+	data-component="context-menu"
+	data-role={$role}
+	data-index={$index}
+>
+	<context-menu-items actions={$actions} />
+</div>

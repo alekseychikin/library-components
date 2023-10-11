@@ -1,0 +1,5 @@
+<param name={$actions} value={[]} />
+
+<for-each item={$action} from={$actions}>
+	<button type="button" data-action={$action.action}>{$action.label}</button>
+</for-each>
