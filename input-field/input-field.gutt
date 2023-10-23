@@ -1,3 +1,5 @@
+<import name="form-input" from="../form-input/form-input.gutt" />
+
 <param name={$type} value="text" />
 <param name={$label} value="" />
 <param name={$value} value="" />
@@ -12,11 +14,7 @@
 	</dt>
 	<dd class="input-field__details">
 		<slot>
-			<input class="input-field__input" type={$type} id={$id} value={$value} placeholder={$placeholder} disabled={$disabled}>
-				<if test={str_len($role) > 0}>
-					<attribute name="data-role" value={$role} />
-				</if>
-			</input>
+			<form-input type={$type} id={$id} value={$value} placeholder={$placeholder} disabled={$disabled} />
 		</slot>
 	</dd>
 </dl>
