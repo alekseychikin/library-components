@@ -1,0 +1,43 @@
+<import name="form-button" from="../form-button/form-button.gutt" />
+
+<param name={$id} value="" />
+<param name={$role} value="" />
+<param name={$disabled} value={false} />
+<param name={$value} value="" />
+<param name={$loader} value={[
+	"loading": false,
+	"progress": 0
+]} />
+<param name={$labels} value={[
+	"upload": "Загрузить",
+	"delete": "Удалить"
+]} />
+
+<label class="form-file" data-component="form-file" data-role={$role} tabindex="0">
+	<switch>
+		<case test={str_len($value)}>
+			<img src={$value} alt="" />
+
+			<if test={!$loader.loading}>
+				<span class="form-file__controls">
+					<form-button appearance="secondary" role="remove">{$labels.delete}</form-button>
+				</span>
+			</if>
+		</case>
+		<default>
+			<span class="form-file__label">
+				{$labels.upload}
+			</span>
+		</default>
+	</switch>
+
+	<input type="file" id={$id} disabled={$disabled} />
+
+	<if test={$loader.loading}>
+		<div class="form-file__loader">
+			<div class="form-file__progress">
+				<div class="form-file__progressbar" style={"width: " ++ ($loader.progress * 100) ++ "%"}></div>
+			</div>
+		</div>
+	</if>
+</label>

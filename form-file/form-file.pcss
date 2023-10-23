@@ -1,0 +1,83 @@
+.form-file {
+	overflow: hidden;
+	position: relative;
+	display: block;
+	border: 1px dashed #000;
+	border-radius: 0.5rem;
+	width: 100%;
+	min-height: 11rem;
+	padding: 0.5rem;
+	box-sizing: border-box;
+	text-align: center;
+	cursor: pointer;
+	line-height: 0;
+}
+
+.form-file input {
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.form-file__label {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	pointer-events: none;
+	padding: 5rem 1rem 4rem;
+	font-size: 1.2rem;
+	line-height: 1.2rem;
+}
+
+.form-file img {
+	max-width: 100%;
+	border-radius: 0.3rem;
+}
+
+.form-file__controls {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: none;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.form-file:hover .form-file__controls,
+.form-file:focus .form-file__controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-file__loader {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.form-file__progress {
+	position: absolute;
+	top: 50%;
+	left: 2rem;
+	right: 2rem;
+	border-radius: 3px;
+	height: 5px;
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.form-file__progressbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	border-radius: 3px;
+	background: black;
+}
