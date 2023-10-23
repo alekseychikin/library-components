@@ -9,14 +9,14 @@
 		margin: 0 calc(var(--gutter) / 2);
 	}
 
-	@for $i from 1 to 12 {
+	@for $i from 12 to 1 {
 		.grid-col--width-$(i) {
 			width: calc((100% + var(--gutter)) / 12 * $(i) - var(--gutter));
 		}
 
-		@for $j from 1 to $i {
+		@for $j from $i to 1 {
 			.grid-col--width-$(i) .grid-col--width-$(j) {
-				width: calc(100% / $(i) * $(j) - var(--gutter));
+				width: calc((100% + var(--gutter)) / $(i) * $(j) - var(--gutter));
 			}
 		}
 	}
