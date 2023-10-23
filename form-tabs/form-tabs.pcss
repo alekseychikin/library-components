@@ -1,0 +1,36 @@
+@import url('../variables.pcss');
+
+.form-tabs {
+	display: flex;
+}
+
+.form-tabs__input {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	visibility: hidden;
+}
+
+.form-tabs__label {
+	padding: 5px 15px;
+	background-color: var(--soft-gray);
+	font: 1.6rem/2.4rem var(--default-font-face);
+	cursor: pointer;
+}
+
+.form-tabs__label:hover {
+	opacity: 0.8;
+}
+
+.form-tabs__input:first-child + .form-tabs__label {
+	border-radius: 4px 0 0 4px;
+}
+
+.form-tabs__label:last-child {
+	border-radius:  0 4px 4px 0;
+}
+
+.form-tabs__input:checked + .form-tabs__label {
+	background-color: var(--primary);
+	color: var(--on-primary);
+}
