@@ -4,12 +4,10 @@
 <param name={$placeholder} value="" />
 <param name={$role} value="" />
 <param name={$disabled} value={false} />
+<param name={$multiple} value={false} />
 
-<label class="form-select">
-	<select name="" id="" id={$id} value={$value} placeholder={$placeholder} disabled={$disabled}>
-		<if test={str_len($role) > 0}>
-			<attribute name="data-role" value={$role} />
-		</if>
+<label class={classes("form-select", $multiple ?? "form-select--multiple" !! "")}>
+	<select name="name[]" id="" id={$id} value={$value} placeholder={$placeholder} disabled={$disabled} multiple={$multiple} data-role={$role}>
 		<slot />
 	</select>
 </label>

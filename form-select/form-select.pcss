@@ -3,7 +3,7 @@
 .form-select {
 	width: 100%;
 	border: 1px solid #000;
-	border-radius: 2px;
+	border-radius: 3px;
 	position: relative;
 	display: inline-block;
 	vertical-align: middle;
@@ -20,7 +20,12 @@
 		border-style: solid;
 		border-width: 5px 4px 0 4px;
 		border-color: #000 transparent transparent transparent;
+		pointer-events: none;
 	}
+}
+
+.form-select--multiple::before {
+	display: none;
 }
 
 .form-select select {
@@ -39,6 +44,11 @@
 	appearance: none;
 	outline: none;
 	font: 1.6rem/2.4rem var(--default-font-face);
+}
+
+.form-select--multiple select {
+	min-height: 10rem;
+	height: auto;
 }
 
 .form-select select::-ms-expand {
