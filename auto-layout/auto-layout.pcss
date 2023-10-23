@@ -12,12 +12,33 @@
 	margin-left: 0.8rem;
 }
 
+.auto-layout--row.auto-layout--wrap {
+	margin-left: -0.4rem;
+	margin-right: -0.4rem;
+	margin-bottom: -0.4rem;
+	flex-wrap: wrap;
+}
+
+.auto-layout--row.auto-layout--wrap > * {
+	margin: 0 0.4rem 0.4rem;
+}
+
 .auto-layout--col > * + * {
 	margin-top: 0.8rem;
 }
 
 .auto-layout--row.auto-layout--size-m > * + * {
 	margin-left: 1.6rem;
+}
+
+.auto-layout--row.auto-layout--wrap.auto-layout--size-m {
+	margin-left: -0.8rem;
+	margin-right: -0.8rem;
+	margin-bottom: -0.8rem;
+}
+
+.auto-layout--row.auto-layout--wrap.auto-layout--size-m > * {
+	margin: 0 0.8rem 0.8rem;
 }
 
 .auto-layout--col.auto-layout--size-m > * + * {
