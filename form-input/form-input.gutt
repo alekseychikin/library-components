@@ -1,0 +1,8 @@
+<param name={$type} value="text" />
+<param name={$value} value="" />
+<param name={$id} value="" />
+<param name={$placeholder} value="" />
+<param name={$role} value="" />
+<param name={$disabled} value={false} />
+
+<input class="form-input" type={$type} id={$id} value={$value} placeholder={$placeholder} disabled={$disabled} data-role={$role} />
