@@ -54,6 +54,10 @@ export default class Component {
 		}
 	}
 
+	setParameter(value) {
+		this.emitEvent('set-parameter', value)
+	}
+
 	emitEvent(eventName, detail = null) {
 		this.node.dispatchEvent(new CustomEvent(eventName, {
 			detail

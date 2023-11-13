@@ -1,3 +1,4 @@
+<param name={$class} value="" />
 <param name={$size} value="m" />
 <param name={$row} value={false} />
 <param name={$top} value={false} />
@@ -5,6 +6,7 @@
 <param name={$wrap} value={false} />
 
 <div class={classes(
+	$class,
 	"auto-layout",
 	"auto-layout--size-" ++ $size,
 	$row ?? "auto-layout--row" !! "auto-layout--col",

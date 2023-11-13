@@ -9,7 +9,7 @@
 
 <switch>
 	<case test={str_len($href)}>
-		<a href={$href}>
+		<a href={$href} class="form-button">
 			<if test={str_len($target)}>
 				<attribute name="target" value={$target} />
 			</if>

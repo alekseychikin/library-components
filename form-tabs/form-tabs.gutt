@@ -1,19 +1,20 @@
+<param name={$class} value="" />
 <param name={$values} value={[]} />
 <param name={$selected} value="" />
 <param name={$name} value="" />
 <param name={$role} value="" />
 
-<div class="form-tabs">
+<div class={classes($class, "form-tabs")}>
 	<for-each item={$item} key={$key} from={$values}>
 		<input
 			class={classes("form-tabs__input", $selected == $key ?? "form-tabs__input--selected" !! "")}
 			type="radio"
 			name={$name}
 			data-role={$role}
-			id={$id ++ "_" + $key}
+			id={$id ++ "_" ++ $key}
 			value={$key}
 			checked={$selected == $key}
 		/>
-		<label class="form-tabs__label" for={$id ++ "_" + $key}>{$item}</label>
+		<label class="form-tabs__label" for={$id ++ "_" ++ $key}>{$item}</label>
 	</for-each>
 </div>

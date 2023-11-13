@@ -5,13 +5,28 @@
 	top: 3rem;
 	right: 0;
 	display: none;
-	padding: 1.2rem;
+	padding: 0.6rem;
 	border-radius: 0.4rem;
-	border: 1px solid var(--gray);
-	background: white;
+	padding: 0.3rem 0.5rem;
+	background: var(--light-gray);
+	box-shadow: 0 4px 1rem var(--gray);
 	z-index: 10;
 }
 
 .context-menu--open {
 	display: block;
+}
+
+.context-menu__button {
+	border: 0;
+	border-radius: 4px;
+	padding: 0.3rem 1rem;
+	background: none;
+	text-align: left;
+	cursor: pointer;
+}
+
+.context-menu__button:hover {
+	background: var(--primary);
+	color: #fff;
 }

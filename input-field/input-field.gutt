@@ -8,13 +8,14 @@
 <param name={$role} value="" />
 <param name={$disabled} value={false} />
 
-<dl class="input-field">
+<dl class="input-field" data-component="input-field">
 	<dt class="input-field__term">
 		<label class="input-field__label" for={$id}>{$label}</label>
 	</dt>
+
 	<dd class="input-field__details">
 		<slot>
-			<form-input type={$type} id={$id} value={$value} placeholder={$placeholder} disabled={$disabled} />
+			<form-input type={$type} id={$id} value={$value} role={$role} placeholder={$placeholder} disabled={$disabled} />
 		</slot>
 	</dd>
 </dl>
