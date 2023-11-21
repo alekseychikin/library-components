@@ -1,0 +1,5 @@
+<param name={$container} value="" />
+<param name={$element} value="" />
+<param name={$role} value="" />
+
+<span data-role={$role} data-component="drag-n-drop" data-container={$container} data-element={$element}><slot /></span>
