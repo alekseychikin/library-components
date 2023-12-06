@@ -1,0 +1,36 @@
+.modal-dialog {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+.modal-dialog--open {
+	display: flex;
+}
+
+.modal-dialog__content {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.8rem;
+	padding: 1.6rem;
+	background: white;
+}
+
+.modal-dialog-message {
+	font-size: 1.8rem;
+	line-height: 1.2;
+}
+
+.modal-dialog-actions {
+	display: flex;
+}
+
+* + .modal-dialog-actions {
+	margin-top: 1.6rem;
+}

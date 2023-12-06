@@ -1,0 +1,7 @@
+<param name={$role} value="" />
+
+<div class="modal-dialog" data-component="modal-dialog" data-role={$role}>
+	<div class="modal-dialog__content">
+		<slot />
+	</div>
+</div>
