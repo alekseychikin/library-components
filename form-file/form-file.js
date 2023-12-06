@@ -25,12 +25,8 @@ export default class FormFile extends Component {
 
 				const input = this.node.querySelector('input')
 
-				if (input.value) {
-					input.value = ''
-					this.emitEvent('file-clear')
-				} else {
-					this.node.click()
-				}
+				input.value = ''
+				this.emitEvent('file-clear')
 			}
 		}
 	}
