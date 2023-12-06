@@ -15,8 +15,10 @@ export default class DragNDrop extends Component {
 		this.pointerDown = this.pointerDown.bind(this)
 		this.pointerMove = this.pointerMove.bind(this)
 		this.pointerUp = this.pointerUp.bind(this)
+		this.scrollHandler = this.scrollHandler.bind(this)
 		this.containerSelector = node.getAttribute('data-container')
 		this.elementSelector = node.getAttribute('data-element')
+		this.triggerSelector = node.getAttribute('data-trigger')
 
 		if (!this.containerSelector) {
 			console.error('Container selector should be provided')
@@ -32,9 +34,8 @@ export default class DragNDrop extends Component {
 		this.elements = Array.from(this.node.querySelectorAll(this.elementSelector))
 		this.target = null
 		this.clone = null
-		this.draging = false
-		this.clientX = 0
-		this.clientY = 0
+		this.initClientX = 0
+		this.initClientY = 0
 		this.translateX = 0
 		this.translateY = 0
 		this.coords = []
@@ -43,6 +44,8 @@ export default class DragNDrop extends Component {
 		this.index = -1
 		this.next = null
 		this.animateId = null
+		this.initScroll = 0
+		this.currentScroll = 0
 		this.initCoord = {
 			left: 0,
 			top: 0,
@@ -65,87 +68,99 @@ export default class DragNDrop extends Component {
 	}
 
 	pointerDown(event) {
-		if (!event.target.matches(this.elementSelector)) {
-			return
-		}
+		let target
 
-		document.body.style.userSelect = 'none'
-		this.observer.disconnect()
-		this.target = event.target
-		this.next = this.target.nextSibling
-		this.index = this.elements.indexOf(this.target)
-		this.originIndex = this.index
-		this.originNext = this.target.nextSibling
-		this.draging = true
-		this.clientX = event.clientX
-		this.clientY = event.clientY
-		this.clone = event.target.cloneNode(true)
-		this.clone.style.position = 'absolute'
-		this.clone.style.left = '0'
-		this.clone.style.top = '0'
-		this.clone.style.zIndex = '9999'
-		this.clone.style.opacity = '0.5'
-		this.target.style.opacity = '0'
-		this.elements[0].offsetParent.appendChild(this.clone)
-		this.presaveCoords()
-		this.clone.style.transform = `translate(${this.initCoord.left}px, ${this.initCoord.top}px)`
-		this.clone.style.cursor = 'grabbing'
-		this.clone.setPointerCapture(event.pointerId)
-		this.clone.addEventListener('pointermove', this.pointerMove)
-		this.clone.addEventListener('pointerup', this.pointerUp)
-		this.clone.addEventListener('lostpointercapture', this.pointerUp)
+		if (target = this.catchPointerDownEvent(event)) {
+			document.body.style.userSelect = 'none'
+			this.observer.disconnect()
+			this.target = target
+			this.next = this.target.nextSibling
+			this.index = this.elements.indexOf(this.target)
+			this.originIndex = this.index
+			this.originNext = this.target.nextSibling
+			this.initClientX = event.clientX
+			this.initClientY = event.clientY
+			this.currentClientX = this.initClientX
+			this.currentClientY = this.initClientY
+			this.initScroll = document.body.scrollTop || document.documentElement.scrollTop || 0
+			this.currentScroll = this.initScroll
+			this.clone = this.target.cloneNode(true)
+			this.clone.style.width = this.target.offsetWidth + 'px'
+			this.clone.style.position = 'absolute'
+			this.clone.style.left = '0'
+			this.clone.style.top = getComputedStyle(target).marginTop
+			this.clone.style.zIndex = '9999'
+			this.clone.style.opacity = '0.5'
+			this.target.style.opacity = '0'
+			this.elements[0].offsetParent.appendChild(this.clone)
+			this.presaveCoords()
+			this.clone.style.transform = `translate(${this.initCoord.left}px, ${this.initCoord.top}px)`
+			this.clone.style.cursor = 'grabbing'
+			this.clone.setPointerCapture(event.pointerId)
+			this.clone.addEventListener('pointermove', this.pointerMove)
+			this.clone.addEventListener('pointerup', this.pointerUp)
+			this.clone.addEventListener('lostpointercapture', this.pointerUp)
+			window.addEventListener('scroll', this.scrollHandler)
+		}
+	}
+
+	scrollHandler() {
+		this.currentScroll = document.body.scrollTop || document.documentElement.scrollTop || 0
+		this.updatePosition()
 	}
 
 	pointerMove(event) {
+		this.currentClientY = event.clientY
+		this.currentClientX = event.clientX
+		this.updatePosition(event)
+	}
+
+	updatePosition() {
+		const left = this.initCoord.left + (this.currentClientX - this.initClientX)
+		const top = this.initCoord.top + (this.currentClientY - this.initClientY) + (this.currentScroll - this.initScroll)
 		let collisionWith
 
-		if (this.draging) {
-			const left = this.initCoord.left + (event.clientX - this.clientX)
-			const top = this.initCoord.top + (event.clientY - this.clientY)
+		this.clone.style.transform = `translate(${left}px, ${top}px)`
 
-			this.clone.style.transform = `translate(${left}px, ${top}px)`
-
-			if ((collisionWith = this.checkCollision(left, top, this.initCoord.height)) !== false) {
-				this.switchPlace(collisionWith)
-			}
+		if ((collisionWith = this.checkCollision(left, top, this.initCoord.height)) !== false) {
+			this.switchPlace(collisionWith)
 		}
 	}
 
 	pointerUp() {
-		if (this.draging) {
-			if (this.originIndex !== this.index) {
-				if (this.originNext) {
-					this.elements[this.originIndex].parentNode.insertBefore(this.target, this.originNext)
-				} else {
-					this.elements[this.originIndex].parentNode.appendChild(this.target)
-				}
-
-				this.node.dispatchEvent(new CustomEvent('change', { detail: {
-					origin: this.originIndex,
-					target: this.index
-				}}))
+		if (this.originIndex !== this.index) {
+			if (this.originNext) {
+				this.elements[this.originIndex].parentNode.insertBefore(this.target, this.originNext)
+			} else {
+				this.elements[this.originIndex].parentNode.appendChild(this.target)
 			}
 
-			this.index = -1
-			this.draging = false
-			this.clone.removeEventListener('pointermove', this.pointerMove)
-			this.clone.removeEventListener('pointerup', this.pointerUp)
-			this.clone.removeEventListener('lostpointercapture', this.pointerUp)
-			this.clone.parentNode.removeChild(this.clone)
-			this.target.style.opacity = ''
-			this.container.style.height = ''
-			window.cancelAnimationFrame(this.animateId)
-			document.body.style.userSelect = ''
-
-			for (let i = 0, element = this.elements[i]; i < this.elements.length; i++, element = this.elements[i]) {
-				element.style.position = ''
-				element.style.transform = ''
-				element.style.left = ''
-				element.style.top = ''
-			}
-
-			this.observer.observe(this.node, this.observeConfig)
+			this.node.dispatchEvent(new CustomEvent('change', { detail: {
+				origin: this.originIndex,
+				target: this.index
+			}}))
 		}
+
+		this.index = -1
+		this.clone.removeEventListener('pointermove', this.pointerMove)
+		this.clone.removeEventListener('pointerup', this.pointerUp)
+		this.clone.removeEventListener('lostpointercapture', this.pointerUp)
+		window.removeEventListener('scroll', this.scrollHandler)
+		this.clone.parentNode.removeChild(this.clone)
+		this.target.style.opacity = ''
+		this.container.style.height = ''
+		window.cancelAnimationFrame(this.animateId)
+		document.body.style.userSelect = ''
+
+		for (let i = 0, element = this.elements[i]; i < this.elements.length; i++, element = this.elements[i]) {
+			element.style.position = ''
+			element.style.transform = ''
+			element.style.left = ''
+			element.style.top = ''
+			element.style.width = ''
+		}
+
+		this.observer.observe(this.node, this.observeConfig)
 	}
 
 	presaveCoords() {
@@ -176,6 +191,7 @@ export default class DragNDrop extends Component {
 		}
 
 		for (let i = this.elements.length - 1, element = this.elements[i], coord = this.coords[i]; i >= 0; i--, element = this.elements[i], coord = this.coords[i]) {
+			element.style.width = element.offsetWidth + 'px'
 			element.style.left = '0'
 			element.style.top = '0'
 			element.style.position = 'absolute'
@@ -207,8 +223,8 @@ export default class DragNDrop extends Component {
 		}
 
 		this.presaveCoords()
-		this.clientX += (this.initCoord.left - initCoolrdLeft)
-		this.clientY += (this.initCoord.top - initCoolrdTop)
+		this.initClientX += (this.initCoord.left - initCoolrdLeft)
+		this.initClientY += (this.initCoord.top - initCoolrdTop)
 	}
 
 	checkCollision(left, top, height) {
@@ -221,7 +237,7 @@ export default class DragNDrop extends Component {
 
 			const distance = Math.sqrt(
 				Math.pow(left - this.coords[i].left, 2) +
-				Math.pow(top + height / 2 - this.coords[i].top - this.coords[i].height / 2, 2)
+				Math.pow(top - this.coords[i].top, 2)
 			)
 
 			if (distance < minDistance) {
@@ -236,6 +252,17 @@ export default class DragNDrop extends Component {
 
 		if (minDistance < minBoundary / 2) {
 			return index
+		}
+
+		return false
+	}
+
+	catchPointerDownEvent({ target }) {
+		if (
+			this.triggerSelector && target.matches(this.triggerSelector) ||
+			!this.triggerSelector && target.matches(this.elementSelector)
+		) {
+			return target.closest(this.elementSelector)
 		}
 
 		return false

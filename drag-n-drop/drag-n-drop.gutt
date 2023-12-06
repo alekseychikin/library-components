@@ -1,5 +1,12 @@
 <param name={$container} value="" />
 <param name={$element} value="" />
 <param name={$role} value="" />
+<param name={$trigger} value="" />
 
-<span data-role={$role} data-component="drag-n-drop" data-container={$container} data-element={$element}><slot /></span>
+<span
+	data-role={$role}
+	data-component="drag-n-drop"
+	data-container={$container}
+	data-element={$element}
+	data-trigger={$trigger}
+><slot /></span>
