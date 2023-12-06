@@ -46,7 +46,7 @@ export default class Component {
 						this.bindedEvents[e.type].self.forEach(handler => handler.call(this, e))
 					}
 				} else {
-					if (e.target.matches(formatedSelector) || e.target.closest(formatedSelector)) {
+					if (e.target.matches(formatedSelector)) {
 						this.bindedEvents[e.type][selector].forEach(handler => handler.call(this, e))
 					}
 				}
