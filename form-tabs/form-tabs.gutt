@@ -1,10 +1,12 @@
 <param name={$class} value="" />
 <param name={$values} value={[]} />
 <param name={$selected} value="" />
+<param name={$id} value="" />
 <param name={$name} value="" />
 <param name={$role} value="" />
+<param name={$size} value="m" />
 
-<div class={classes($class, "form-tabs")}>
+<div class={classes($class, "form-tabs", "form-tabs--size-" ++ $size)}>
 	<for-each item={$item} key={$key} from={$values}>
 		<input
 			class={classes("form-tabs__input", $selected == $key ?? "form-tabs__input--selected" !! "")}
