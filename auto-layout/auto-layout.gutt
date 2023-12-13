@@ -4,6 +4,7 @@
 <param name={$top} value={false} />
 <param name={$bottom} value={false} />
 <param name={$wrap} value={false} />
+<param name={$justify} value={false} />
 
 <div class={classes(
 	$class,
@@ -12,6 +13,7 @@
 	$row ?? "auto-layout--row" !! "auto-layout--col",
 	$top ?? "auto-layout--top" !! "",
 	$bottom ?? "auto-layout--bottom" !! "",
+	$justify && $row ?? "auto-layout--justify" !! "",
 	$wrap && $row ?? "auto-layout--wrap" !! ""
 )}>
 	<slot />
