@@ -3,7 +3,7 @@ export default class Component {
 		this.node = node
 		this.bindedEvents = {}
 		this.eventHandler = this.eventHandler.bind(this)
-		setTimeout(this.bindEvents, 0)
+		this.bindEvents()
 	}
 
 	bindEvents = () => {
