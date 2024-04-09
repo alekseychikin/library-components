@@ -1,0 +1,16 @@
+<param name={$class} value="" />
+<param name={$role} value="" />
+<param name={$values} value={[]} />
+
+<div class={classes("form-suggestions", $class)} data-component="form-suggestions" data-role={$role}>
+	<for-each item={$item} from={$values}>
+		<button
+			class="form-suggestions__button"
+			type="button"
+			data-value={$item.value}
+			data-role="form-suggestion-button"
+		>
+			{$item.label}
+		</button>
+	</for-each>
+</div>
