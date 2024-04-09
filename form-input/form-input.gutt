@@ -4,5 +4,15 @@
 <param name={$placeholder} value="" />
 <param name={$role} value="" />
 <param name={$disabled} value={false} />
+<param name={$autocomplete} value="on" />
 
-<input class="form-input" type={$type} id={$id} value={$value} placeholder={$placeholder} disabled={$disabled} data-role={$role} />
+<input
+	class="form-input"
+	type={$type}
+	id={$id}
+	value={$value}
+	placeholder={$placeholder}
+	disabled={$disabled}
+	data-role={$role}
+	autocomplete={$autocomplete}
+/>
