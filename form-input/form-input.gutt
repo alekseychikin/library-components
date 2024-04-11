@@ -5,9 +5,10 @@
 <param name={$role} value="" />
 <param name={$disabled} value={false} />
 <param name={$autocomplete} value="on" />
+<param name={$class} value="" />
 
 <input
-	class="form-input"
+	class={classes("form-input", $class)}
 	type={$type}
 	id={$id}
 	value={$value}
