@@ -6,9 +6,10 @@
 <param name={$disabled} value={false} />
 <param name={$autocomplete} value="on" />
 <param name={$class} value="" />
+<param name={$size} value="m" />
 
 <input
-	class={classes("form-input", $class)}
+	class={classes("form-input", $class, "form-input--size-" ++ $size)}
 	type={$type}
 	id={$id}
 	value={$value}
