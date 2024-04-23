@@ -13,10 +13,19 @@
 	"delete": "Удалить"
 ]} />
 
+<variable name={$path} value={str_split($value, ".")} />
+<variable name={$extname} value={arr_len($path) > 0 ?? arr_pop($path) !! ""} />
+<variable name={$isImage} value={arr_len($path) > 0 ?? arr_contain(["jpg", "jpeg", "png", "webm"], str_lower($extname)) !! false} />
+<variable name={$basename} value={arr_len($path) > 0 ?? arr_pop(str_split(arr_pop($path), "/")) !! ""} />
+
 <label class="form-file" data-component="form-file" data-role={$role} tabindex="0">
 	<switch>
 		<case test={str_len($value)}>
-			<img src={$value} alt="" />
+			<if test={$isImage}>
+				<img src={$value} alt="" />
+			</if>
+
+			<span class="form-file__filename">{$basename}.{$extname}</span>
 
 			<if test={!$loader.loading}>
 				<span class="form-file__controls">
