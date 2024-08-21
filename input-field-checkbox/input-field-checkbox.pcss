@@ -1,0 +1,33 @@
+@import url('../variables.pcss');
+
+.input-field-checkbox {
+	display: flex;
+	align-items: center;
+	gap: 1.2rem;
+	cursor: pointer;
+}
+
+.input-field-checkbox__toggler {
+	display: block;
+	border: 1px solid var(--black);
+	border-radius: 1.6rem;
+	box-sizing: border-box;
+	width: 3.6rem;
+	height: 2rem;
+	padding: 0.2rem;
+}
+
+.input-field-checkbox__bullet {
+	position: relative;
+	display: block;
+	border-radius: 50%;
+	width: 1.4rem;
+	height: 1.4rem;
+	background: var(--black);
+	transition: transform 0.03s ease-in-out, background 0.03s ease-in-out;
+}
+
+input:checked ~ .input-field-checkbox__toggler .input-field-checkbox__bullet {
+	transform: translateX(1.6rem);
+	background: var(--success);
+}

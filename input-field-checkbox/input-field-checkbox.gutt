@@ -1,0 +1,13 @@
+<param name={$label} value="" />
+<param name={$value} value="" />
+<param name={$id} value="" />
+<param name={$role} value="" />
+<param name={$disabled} value={false} />
+
+<label class="input-field-checkbox">
+	{$label}
+	<input type="checkbox" id={$id} data-role={$role} checked={$value} />
+	<span class="input-field-checkbox__toggler">
+		<span class="input-field-checkbox__bullet"></span>
+	</span>
+</label>
