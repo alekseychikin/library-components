@@ -7,7 +7,7 @@
 <param name={$multiple} value={false} />
 
 <label class={classes("form-select", $multiple ?? "form-select--multiple" !! "")}>
-	<select name="name[]" id="" id={$id} value={$value} placeholder={$placeholder} disabled={$disabled} multiple={$multiple} data-role={$role}>
+	<select id={$id} value={$value} placeholder={$placeholder} disabled={$disabled} multiple={$multiple} data-role={$role}>
 		<slot />
 	</select>
 </label>

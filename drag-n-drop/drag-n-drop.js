@@ -135,7 +135,7 @@ export default class DragNDrop extends Component {
 				this.elements[this.originIndex].parentNode.appendChild(this.target)
 			}
 
-			this.node.dispatchEvent(new CustomEvent('change', { detail: {
+			this.node.dispatchEvent(new CustomEvent('change-order', { detail: {
 				origin: this.originIndex,
 				target: this.index
 			}}))
