@@ -1,0 +1,13 @@
+<param name={$opened} value={false} />
+<param name={$role} value="" />
+<param name={$title} value="" />
+
+<div class="sheet" data-opened={$opened} data-component="sheet" data-role={$role}>
+	<div class="sheet__content">
+		<div>{$title}</div>
+
+		<div>
+			<slot />
+		</div>
+	</div>
+</div>
