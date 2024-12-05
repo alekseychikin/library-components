@@ -54,8 +54,16 @@ export default class Component {
 		}
 	}
 
-	setParameter(value) {
+	setParameter(field, value) {
+		this.emitEvent('set-parameter', { [field]: value })
+	}
+
+	setParameters(value) {
 		this.emitEvent('set-parameter', value)
+	}
+
+	getParameter(param, defaultValue = null) {
+		return window.$getState ? window.$getState(this.node)[param] : defaultValue
 	}
 
 	emitEvent(eventName, detail = null) {
