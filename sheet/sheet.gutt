@@ -4,9 +4,9 @@
 
 <div class="sheet" data-opened={$opened} data-component="sheet" data-role={$role}>
 	<div class="sheet__content">
-		<div>{$title}</div>
+		<div class="sheet__title">{$title}</div>
 
-		<div>
+		<div class="sheet__data">
 			<slot />
 		</div>
 	</div>
