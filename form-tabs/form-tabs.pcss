@@ -10,16 +10,32 @@
 }
 
 .form-tabs__label {
+	position: relative;
 	padding: 0.4rem 1.6rem;
 	background-color: var(--soft-gray);
 	font: 1.6rem/2.4rem var(--default-font-face);
 	cursor: pointer;
 }
 
+.form-tabs__label::before {
+	content: '';
+	position: absolute;
+	top: 0.6rem;
+	bottom: 0.6rem;
+	left: 0;
+	width: 0.1rem;
+	background: var(--gray);
+}
+
 .form-tabs--size-s .form-tabs__label {
 	padding: 0.2rem 0.8rem;
 	font-size: 1.4rem;
 	line-height: 1.6rem;
+}
+
+.form-tabs--size-s .form-tabs__label::before {
+	top: 0.4rem;
+	bottom: 0.4rem;
 }
 
 .form-tabs__label:active {
@@ -40,4 +56,15 @@
 	background-color: var(--primary);
 	color: var(--on-primary);
 	cursor: default;
+}
+
+.form-tabs__input:first-child + .form-tabs__label::before,
+.form-tabs__input:checked + .form-tabs__label::before,
+.form-tabs__input:checked + .form-tabs__label + .form-tabs__input + .form-tabs__label::before {
+	display: none;
+}
+
+.form-tabs__input:checked + .form-tabs__label + .form-tabs__input:checked + .form-tabs__label::before {
+	display: block;
+	background: var(--soft-gray);
 }
