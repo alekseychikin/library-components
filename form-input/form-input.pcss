@@ -1,7 +1,11 @@
 @import url('../variables.pcss');
 
-.form-input,
-.form-input:focus {
+.form-input {
+	position: relative;
+}
+
+.form-input__control,
+.form-input__control:focus {
 	box-sizing: border-box;
 	border-radius: 3px;
 	border: 0.1rem solid #000;
@@ -12,8 +16,44 @@
 	font: 1.6rem/2.4rem var(--default-font-face) !important;
 }
 
-.form-input--size-s,
-.form-input--size-s:focus {
+.form-input__control--size-s,
+.form-input__control--size-s:focus {
 	padding: 0.1rem 0.5rem;
 	height: 3.2rem;
+}
+
+.form-input__suggestions {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.3rem;
+	padding: 0.4rem 0;
+	box-shadow: 0 4px 16px 0 rgba(183, 175, 158, 0.24), 0 2px 8px 0 rgba(183, 175, 158, 0.32);
+	background: #fff;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.form-input__suggestions[data-opened] {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.form-input__suggestion {
+	border: 0;
+	padding: 0.8rem 1.6rem;
+	width: 100%;
+	color: var(--black);
+	background: none;
+	font-weight: 300;
+	text-align: left;
+	cursor: pointer;
+}
+
+.form-input__suggestion:hover,
+.form-input__suggestion--selected {
+	background: var(--gray);
 }
