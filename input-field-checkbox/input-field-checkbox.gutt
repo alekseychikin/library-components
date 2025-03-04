@@ -6,7 +6,7 @@
 
 <label class="input-field-checkbox">
 	{$label}
-	<input type="checkbox" id={$id} data-role={$role} checked={$value} />
+	<input class="input-field-checkbox__control" type="checkbox" id={$id} data-role={$role} checked={$value} />
 	<span class="input-field-checkbox__toggler">
 		<span class="input-field-checkbox__bullet"></span>
 	</span>
