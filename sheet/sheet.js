@@ -11,13 +11,7 @@ export default class Sheet extends Component {
 		}
 	}
 
-	toggle() {
-		const opened = this.getParameter('opened', false)
-
-		this.setParameter('opened', !opened)
-	}
-
 	close() {
-		this.setParameter('opened', false)
+		this.emitEvent('close-sheet')
 	}
 }
