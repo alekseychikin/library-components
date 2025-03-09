@@ -2,11 +2,12 @@ export default class Component {
 	constructor(node) {
 		this.node = node
 		this.bindedEvents = {}
+		this.bindEvents = this.bindEvents.bind(this)
 		this.eventHandler = this.eventHandler.bind(this)
 		this.bindEvents()
 	}
 
-	bindEvents = () => {
+	bindEvents() {
 		for (const key in this.events) {
 			const match = key.split(':')
 			const events = match[0].trim().split(' ')
