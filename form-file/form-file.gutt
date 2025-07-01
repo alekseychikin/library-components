@@ -13,19 +13,22 @@
 	"delete": "Удалить"
 ]} />
 
+<variable name={$isDataUrl} value={str_sub($value, 0, 10) == "data:image"} />
 <variable name={$path} value={str_split($value, ".")} />
-<variable name={$extname} value={arr_len($path) > 0 ?? arr_pop($path) !! ""} />
-<variable name={$isImage} value={arr_len($path) > 0 ?? arr_contain(["jpg", "jpeg", "png", "webm"], str_lower($extname)) !! false} />
-<variable name={$basename} value={arr_len($path) > 0 ?? arr_pop(str_split(arr_pop($path), "/")) !! ""} />
+<variable name={$extname} value={!$isDataUrl && arr_len($path) > 0 ?? arr_pop($path) !! ""} />
+<variable name={$isImage} value={arr_len($path) > 0 ?? arr_contain(["jpg", "jpeg", "png", "webp"], str_lower($extname)) !! $isDataUrl} />
+<variable name={$basename} value={!$isDataUrl && arr_len($path) > 0 ?? arr_pop(str_split(arr_pop($path), "/")) !! ""} />
 
 <label class="form-file" data-component="form-file" data-role={$role} tabindex="0">
 	<switch>
 		<case test={str_len($value)}>
-			<if test={$isImage}>
+			<if test={$isImage || $isDataUrl}>
 				<img src={$value} alt="" />
 			</if>
 
-			<span class="form-file__filename">{$basename}.{$extname}</span>
+			<if test={!$isDataUrl}>
+				<span class="form-file__filename">{$basename}.{$extname}</span>
+			</if>
 
 			<if test={!$loader.loading}>
 				<span class="form-file__controls">
