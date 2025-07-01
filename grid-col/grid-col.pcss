@@ -4,7 +4,15 @@
 	width: 100%;
 }
 
+* + .grid-col {
+	margin-top: 1.6rem;
+}
+
 @media (--desktop) {
+	* + .grid-col {
+		margin-top: 0;
+	}
+
 	.grid-col {
 		margin: 0 calc(var(--gutter) / 2);
 	}
