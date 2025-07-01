@@ -1,0 +1,4 @@
+<param name={$href} value="" />
+<param name={$target} value="_self" />
+
+<a class="table-link" href={$href} target={$target}><slot /></a>
