@@ -7,6 +7,7 @@
 <param name={$target} value="" />
 <param name={$appearance} value="primary" />
 <param name={$size} value="m" />
+<param name={$loading} value={false} />
 
 <switch>
 	<case test={str_len($href)}>
@@ -20,7 +21,7 @@
 	</case>
 
 	<default>
-		<button class={classes("form-button", "form-button--appearance-" ++ $appearance, "form-button--size-" ++ $size)} type={$type} disabled={$disabled}>
+		<button class={classes("form-button", "form-button--appearance-" ++ $appearance, "form-button--size-" ++ $size)} type={$type} disabled={$disabled || $loading}>
 			<if test={str_len($id)}>
 				<attribute name="id" value={$id} />
 			</if>
