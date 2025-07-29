@@ -1,0 +1,12 @@
+<import name="notification-item" from="./notification.gutt" />
+
+<param name={$data} value={[]} />
+
+<variable name={$length} value={arr_len($data) > 3 ?? 3 !! arr_len($data)} />
+<variable name={$notifications} value={arr_slice($data, (arr_len($data) - $length), $length)} />
+
+<div class="notifications">
+	<for-each item={$item} key={$index} from={$notifications}>
+		<notification-item data={$item} index={$index} length={$length} />
+	</for-each>
+</div>

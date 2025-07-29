@@ -1,0 +1,17 @@
+@import url('../variables.pcss');
+
+.notification {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 30rem;
+	padding: 1.6rem;
+	background: #fff;
+	border: 1px solid var(--gray);
+	border-radius: 0.5rem;
+	box-shadow: 0 0.4rem 1.2rem #00000012;
+}
+
+.notification[data-type="error"] {
+	border-color: var(--danger);
+}

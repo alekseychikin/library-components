@@ -1,0 +1,7 @@
+<param name={$data} value={[]} />
+<param name={$index} value={0} />
+<param name={$length} value={0} />
+
+<div class="notification" data-type={$data.type} data-index={$index} style={"transform: translateY(" ++ ($index * -10) ++ "px) scale(" ++ (1 - ($length - $index) * 0.05) ++"); z-index: " ++ $index}>
+	<div class="notification__label">{$data.label}</div>
+</div>
