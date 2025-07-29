@@ -1,6 +1,7 @@
 <param name={$type} value="text" />
 <param name={$value} value="" />
 <param name={$id} value="" />
+<param name={$name} value="" />
 <param name={$placeholder} value="" />
 <param name={$role} value="" />
 <param name={$disabled} value={false} />
@@ -17,6 +18,7 @@
 		class={classes("form-input__control", $class, "form-input__control--size-" ++ $size)}
 		type={$type}
 		id={$id}
+		name={$name}
 		value={$value}
 		placeholder={$placeholder}
 		disabled={$disabled}
