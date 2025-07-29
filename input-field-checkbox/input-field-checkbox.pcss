@@ -7,6 +7,11 @@
 	cursor: pointer;
 }
 
+.input-field-checkbox[data-disabled] {
+	color: var(--gray);
+	cursor: default;
+}
+
 .input-field-checkbox__toggler {
 	display: block;
 	border: 1px solid var(--black);
@@ -15,6 +20,10 @@
 	width: 3.6rem;
 	height: 2rem;
 	padding: 0.2rem;
+}
+
+.input-field-checkbox[data-disabled] .input-field-checkbox__toggler {
+	border-color: var(--gray);
 }
 
 .input-field-checkbox__control {
@@ -29,6 +38,10 @@
 	height: 1.4rem;
 	background: var(--black);
 	transition: transform 0.03s ease-in-out, background 0.03s ease-in-out;
+}
+
+.input-field-checkbox[data-disabled] .input-field-checkbox__bullet {
+	background: var(--gray);
 }
 
 input:checked ~ .input-field-checkbox__toggler .input-field-checkbox__bullet {

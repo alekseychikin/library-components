@@ -4,10 +4,12 @@
 <param name={$role} value="" />
 <param name={$disabled} value={false} />
 
-<label class="input-field-checkbox">
+<label class="input-field-checkbox" data-disabled={$disabled}>
 	{$label}
-	<input class="input-field-checkbox__control" type="checkbox" id={$id} data-role={$role} checked={$value} />
+	<input class="input-field-checkbox__control" type="checkbox" id={$id} data-role={$role} checked={$value} disabled={$disabled} />
 	<span class="input-field-checkbox__toggler">
 		<span class="input-field-checkbox__bullet"></span>
 	</span>
+
+	<slot />
 </label>
