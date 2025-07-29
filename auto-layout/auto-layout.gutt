@@ -1,20 +1,23 @@
 <param name={$class} value="" />
 <param name={$size} value="m" />
 <param name={$row} value={false} />
-<param name={$top} value={false} />
-<param name={$bottom} value={false} />
 <param name={$wrap} value={false} />
-<param name={$justify} value={false} />
+<param name={$align} value="stretch" />
+<param name={$valign} value="top" />
+<param name={$full-height} value={false} />
 
-<div class={classes(
-	$class,
-	"auto-layout",
-	"auto-layout--size-" ++ $size,
-	$row ?? "auto-layout--row" !! "auto-layout--col",
-	$top ?? "auto-layout--top" !! "",
-	$bottom ?? "auto-layout--bottom" !! "",
-	$justify && $row ?? "auto-layout--justify" !! "",
-	$wrap && $row ?? "auto-layout--wrap" !! ""
-)}>
+<div
+	class={classes(
+		$class,
+		"auto-layout",
+		"auto-layout--size-" ++ $size
+	)}
+	data-size={$size}
+	data-wrap={$wrap && $row}
+	data-direction={$row ?? "row" !! "column"}
+	data-align={$align}
+	data-valign={$valign}
+	data-full-height={$full-height}
+>
 	<slot />
 </div>
