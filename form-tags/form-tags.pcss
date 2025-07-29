@@ -1,0 +1,26 @@
+@import url('../variables.pcss');
+
+.form-tags {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -0.4rem;
+}
+
+.form-tags input {
+	position: absolute;
+	visibility: hidden;
+}
+
+.form-tags__tag {
+	margin: 0.4rem;
+	border: 0.1rem solid var(--gray);
+	border-radius: 1.2rem;
+	padding: 0.3rem 1.2rem;
+	cursor: pointer;
+}
+
+input:checked + .form-tags__tag {
+	background: var(--primary);
+	color: var(--on-primary);
+	border-color: transparent;
+}

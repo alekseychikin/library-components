@@ -1,0 +1,19 @@
+<param name={$options} value={[]} />
+<param name={$id} value="" />
+<param name={$name} value="" />
+<param name={$role} value="" />
+<param name={$selected} value={[]} />
+
+<div class="form-tags">
+	<for-each item={$option} key={$field} from={$options}>
+		<input
+			type="checkbox"
+			name={$name}
+			data-role={$role}
+			id={$id ++ "_" ++ $field}
+			value={$field}
+			checked={arr_contain($selected, $field)}
+		/>
+		<label class="form-tags__tag" for={$id ++ "_" ++ $field}>{$option}</label>
+	</for-each>
+</div>
