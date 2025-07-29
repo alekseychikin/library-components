@@ -4,6 +4,7 @@
 <param name={$label} value="" />
 <param name={$value} value="" />
 <param name={$id} value="" />
+<param name={$name} value="" />
 <param name={$placeholder} value="" />
 <param name={$role} value="" />
 <param name={$disabled} value={false} />
@@ -16,7 +17,7 @@
 
 	<dd class="input-field__details">
 		<slot>
-			<form-input type={$type} id={$id} value={$value} role={$role} placeholder={$placeholder} disabled={$disabled} autocomplete={$autocomplete} />
+			<form-input type={$type} id={$id} name={$name} value={$value} role={$role} placeholder={$placeholder} disabled={$disabled} autocomplete={$autocomplete} />
 		</slot>
 	</dd>
 </dl>
