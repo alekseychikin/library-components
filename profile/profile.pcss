@@ -1,0 +1,20 @@
+@import url('../variables.pcss');
+
+.profile > * {
+	display: block;
+	padding: 1.6rem;
+	border-radius: 1.6rem;
+	background: white;
+	color: var(--black);
+	text-decoration: none;
+}
+
+.profile > *::before {
+	content: 'Профиль';
+	display: block;
+	font-size: 1rem;
+}
+
+.profile > a:hover {
+	background: var(--light-gray);
+}

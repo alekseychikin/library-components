@@ -1,0 +1,14 @@
+<param name={$href} value="" />
+<param name={$url} value="" />
+<param name={$login} value="" />
+
+<div class={classes($class, "profile")}>
+	<switch>
+		<case test={$href == $url}>
+			<span>{$login}</span>
+		</case>
+		<default>
+			<a href={$href}>{$login}</a>
+		</default>
+	</switch>
+</div>

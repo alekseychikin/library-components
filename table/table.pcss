@@ -2,10 +2,45 @@
 
 .table {
 	width: 100%;
+	display: block;
+}
+
+@media (--desktop) {
+	.table {
+		display: table;
+	}
+}
+
+.table thead {
+	display: none;
+}
+
+@media (--desktop) {
+	.table thead {
+		display: table-header-group;
+	}
 }
 
 .table tr {
 	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+@media (--desktop) {
+	.table tr {
+		display: table-row;
+	}
+}
+
+.table tr:nth-child(odd) td {
+	background: var(--light-gray);
+}
+
+@media (--desktop) {
+	.table tr:nth-child(odd) td {
+		background: none;
+	}
 }
 
 .table th {
@@ -16,6 +51,14 @@
 .table th,
 .table td {
 	padding: 1rem;
+	display: block;
+}
+
+@media (--desktop) {
+	.table th,
+	.table td {
+		display: table-cell;
+	}
 }
 
 .table th:first-child,
@@ -30,6 +73,16 @@
 
 .table tr > * {
 	border-bottom: 1px solid var(--light-gray);
+}
+
+.table tr:nth-child(odd) > * {
+	border-color: var(--soft-gray);
+}
+
+@media (--desktop) {
+	.table tr:nth-child(odd) > * {
+		border-color: var(--light-gray);
+	}
 }
 
 .table tbody tr:hover {
